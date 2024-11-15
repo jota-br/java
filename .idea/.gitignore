@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+*.iml
+*.xml
+
+*.class
+.vscode
+*.code-workspace
+/out/production/java17-masterclass/java17-masterclass.iml
+/out
