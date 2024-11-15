@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         String[] names = {"Anna", "Bob", "Eve", "Otto", "Adam", "Asa", "Lil", "Nany", "Pip", "Ellen"};
-        String[] fullNames = getFullNames(500, names, () -> new Random().nextInt(0, names.length));
+        String[] fullNames = getFullNames(5, names, () -> new Random().nextInt(0, names.length));
         System.out.println(Arrays.toString(fullNames));
 
         Predicate<String> hasSameFirstAndLastName = source -> {
@@ -23,6 +23,9 @@ public class Main {
         };
 
         List<String> persons = new ArrayList<>(fullNames.length);
+
+        List<String> persons2 = new ArrayList<>(List.of(fullNames));
+        persons2.removeIf(name -> name.split(" ")[0].equals(name.split(" ")[2]));
 
         for (String n : fullNames) {
             boolean isTrue = hasSameFirstAndLastName.test(n);
@@ -34,6 +37,7 @@ public class Main {
         }
 
         System.out.println(persons);
+        System.out.println(persons2);
     }
 
     public static String[] getFullNames(int count, String[] names, Supplier<Integer> s) {
