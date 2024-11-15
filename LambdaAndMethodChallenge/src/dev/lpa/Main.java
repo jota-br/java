@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class Main {
@@ -49,6 +47,7 @@ public class Main {
 //        Arrays.asList(arrayListOfNames).forEach(System.out::println);
         System.out.println("Original Array");
         System.out.println(Arrays.toString(arrayListOfNames));
+        System.out.println("-".repeat(30));
 
         List<UnaryOperator<String>> operations = new ArrayList<>(List.of(
                 String::toLowerCase,
@@ -63,35 +62,47 @@ public class Main {
 
         List<String> listOfNames = new ArrayList<>(List.of(arrayListOfNames));
         applyChanges(listOfNames, operations);
+        System.out.println("-".repeat(30));
 
         System.out.println("toUpperCase");
         Arrays.setAll(arrayListOfNames, i -> arrayListOfNames[i].transform(toUpperCase));
 
         listOfNames = new ArrayList<>(List.of(arrayListOfNames));
-        listOfNames.forEach(System.out::println);
+//        listOfNames.forEach(System.out::println);
+        System.out.println(listOfNames);
+        System.out.println("-".repeat(30));
 
 //        listOfNames.replaceAll(s -> applyChanges(s, toUpperCase));
 //        listOfNames.forEach(System.out::println);
 
         System.out.println("Adding middle initial");
         listOfNames.replaceAll(s -> s + " " + generateRandomChar('A', 'Z') + ".");
-        listOfNames.forEach(System.out::println);
+//        listOfNames.forEach(System.out::println);
+        System.out.println(listOfNames);
+        System.out.println("-".repeat(30));
 
         System.out.println("Adding last name");
         listOfNames.replaceAll(s -> s + " " + reverseName(arrayListOfNames[new Random().nextInt(arrayListOfNames.length)]));
-        listOfNames.forEach(System.out::println);
+//        listOfNames.forEach(System.out::println);
+        System.out.println(listOfNames);
+        System.out.println("-".repeat(30));
 
         System.out.println("Removing duplicates: ");
         listOfNames.removeIf(hasSameLastName);
-        listOfNames.forEach(System.out::println);
+//        listOfNames.forEach(System.out::println);
+        System.out.println(listOfNames);
+        System.out.println("-".repeat(30));
 
         System.out.println("Transform toLowerCaseExceptFirstLetter");
         listOfNames.replaceAll(s -> s.transform(toLowerCaseExceptFirstLetter));
-        listOfNames.forEach(System.out::println);
+//        listOfNames.forEach(System.out::println);
+        System.out.println(listOfNames);
+        System.out.println("-".repeat(30));
 
         System.out.println("Transform toPascalCase");
         listOfNames.replaceAll(s -> s.transform(toPascalCase));
-        listOfNames.forEach(System.out::println);
+//        listOfNames.forEach(System.out::println);
+        System.out.println(listOfNames);
 
         System.out.println("-".repeat(30));
     }
